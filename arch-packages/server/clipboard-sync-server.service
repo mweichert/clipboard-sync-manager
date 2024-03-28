@@ -1,0 +1,12 @@
+[Unit]
+Description=Clipboard Sync Manager Server Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/clipboard-sync-server/clipboard-sync-server --address 0.0.0.0 --port 16789
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

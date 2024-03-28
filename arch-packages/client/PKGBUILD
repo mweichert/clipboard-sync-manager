@@ -1,0 +1,15 @@
+pkgname=clipboard-sync-client
+pkgver=1.0
+pkgrel=1
+pkgdesc="Client for clipboard-sync-manager project"
+arch=('x86_64')
+url="http://yourwebsite.com/"
+license=('MIT')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP')  # Replace 'SKIP' with the actual SHA-256 sum if available
+
+package() {
+    cd "$srcdir"
+    mkdir -p "$pkgdir/opt"
+    cp -r dist "$pkgdir/opt/$pkgname"
+}
