@@ -105,7 +105,8 @@ def main():
         port = args.port
 
         logger.info(f"Server is configured to listen on {address}:{port}")
-        loop = asyncio.get_event_loop()
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
         try:
             loop.run_until_complete(start_server(address, port))
         except KeyboardInterrupt:

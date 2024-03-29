@@ -170,7 +170,8 @@ async def main_loop():
 def main():
     global args
     args = parse_arguments()
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
 
     async def shutdown(signal, frame):
         global websocket
