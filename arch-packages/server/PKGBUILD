@@ -1,6 +1,6 @@
 pkgname=clipboard-sync-server
-pkgver=0.12
-pkgrel=0
+pkgver=0.13
+pkgrel=1
 pkgdesc="Server for clipboard-sync-manager project"
 arch=('x86_64')
 url="http://github.com/mweichert/clipboard-sync-manager"
@@ -14,6 +14,6 @@ install=clipboard-sync-server.install
  package() {                                                                                                                                                                                                       
         cd "$srcdir"                                                                                                                                                                                                  
         install -d "$pkgdir/opt/clipboard-sync-server"                                                                                                                                                                
-        cp -a clipboard-sync-server/* "$pkgdir/opt/clipboard-sync-server"
+        cp -a dist/clipboard-sync-server/* "$pkgdir/opt/clipboard-sync-server"
         install --Dm644 clipboard-sync-service "$pkgdir/etc/systemd/system/clipboard-sync-server.service"  
  }   
