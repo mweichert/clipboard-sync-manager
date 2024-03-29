@@ -29,7 +29,7 @@ fi
 echo "New version is $new_version"
 
 # Get the release number from the PKGBUILD
-release_number=$(sed -nE 's/pkgver=([0-9]+)/\1/p' arch-packages/client/PKGBUILD)
+release_number=$(sed -nE 's/pkgrel=([0-9]+)/\1/p' arch-packages/client/PKGBUILD)
 next_release=$((release_number + 1))
 
 # Replace the version in PKGBUILD

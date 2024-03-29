@@ -1,6 +1,6 @@
 pkgname=clipboard-sync-server
-pkgver=0.1
-pkgrel=0
+pkgver=0.10
+pkgrel=
 pkgdesc="Server for clipboard-sync-manager project"
 arch=('x86_64')
 url="http://github.com/mweichert/clipboard-sync-manager"
