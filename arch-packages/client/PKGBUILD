@@ -10,6 +10,7 @@ source=("clipboard-sync-client.zip::https://github.com/mweichert/clipboard-sync-
         )
 sha256sums=('SKIP' 'SKIP')
 install=clipboard-sync-client.install
+depends=('xclip' 'clipcat')
 
  package() {                                                                                                                                                                                                       
         cd "$srcdir"                                                                                                                                                                                                  
