@@ -78,3 +78,47 @@ jobs:
           asset_path: ./clipboard-sync-server.zip
           asset_name: clipboard-sync-server.zip
           asset_content_type: application/zip
+  package-arch:
+    runs-on: ubuntu-latest
+    needs: build  # Ensure this runs after the build job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          path: 'repo'
+
+      - name: Build PKGBUILD
+        uses: docker://archlinux:latest
+        with:
+          entrypoint: /bin/bash
+          args:
+            - -c
+            - |
+              pacman -Sy --noconfirm base-devel git
+              cd repo/arch-packages/client
+              sudo -u nobody makepkg -s
+              cd ../server
+              sudo -u nobody makepkg -s
+              
+      - name: Upload client package to Release
+        id: upload-client-package
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
+          asset_path: ./repo/arch-packages/client/*.pkg.tar.zst
+          asset_name: clipboard-sync-client.pkg.tar.zst
+          asset_content_type: application/zstd
+      
+      - name: Upload server package to Release
+        id: upload-server-package
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
+          asset_path: ./repo/arch-packages/server/*.pkg.tar.zst
+          asset_name: clipboard-sync-server.pkg.tar.zst
+          asset_content_type: application/zstd
+  

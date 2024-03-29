@@ -1,0 +1,7 @@
+#!/bin/bash
+
+post_install() {
+    echo "Enabling and starting clipboard-sync-client.service"
+    systemctl enable clipboard-sync-client.service
+    systemctl start clipboard-sync-client.service
+}

@@ -1,15 +1,18 @@
 pkgname=clipboard-sync-client
-pkgver=1.0
-pkgrel=1
+pkgver=0.1
 pkgdesc="Client for clipboard-sync-manager project"
 arch=('x86_64')
-url="http://yourwebsite.com/"
+url="http://github.com/mweichert/clipboard-sync-manager"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz")
+source=("clipboard-sync-client.zip:https://github.com/mweichert/clipboard-sync-manager/releases/download/v$pkgver/clipboard-sync-client.zip"
+        "clipboard-sync-client.service:https://raw.githubusercontent.com/mweichert/clipboard-sync-manager/main/arch-releases/client/clipboard-sync-client.service"
+        )
 sha256sums=('SKIP')  # Replace 'SKIP' with the actual SHA-256 sum if available
+install=clipboard-sync-client.install
 
-package() {
-    cd "$srcdir"
-    mkdir -p "$pkgdir/opt"
-    cp -r dist "$pkgdir/opt/$pkgname"
-}
+ package() {                                                                                                                                                                                                       
+        cd "$srcdir"                                                                                                                                                                                                  
+        install -d "$pkgdir/opt/clipboard-sync-client"                                                                                                                                                                
+        cp -a clipboard-sync-client/* "$pkgdir/opt/clipboard-sync-client"
+        install --Dm644 clipboard-sync-service "$pkgdir/etc/systemd/system/clipboard-sync-client.service"  
+ }   
