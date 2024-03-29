@@ -1,6 +1,6 @@
 pkgname=clipboard-sync-client
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=3
 pkgdesc="Client for clipboard-sync-manager project"
 arch=('x86_64')
 url="http://github.com/mweichert/clipboard-sync-manager"
@@ -16,5 +16,5 @@ depends=('xclip' 'clipcat')
         cd "$srcdir"                                                                                                                                                                                                  
         install -d "$pkgdir/opt/clipboard-sync-client"                                                                                                                                                                
         cp -a dist/clipboard-sync-client/* "$pkgdir/opt/clipboard-sync-client"
-        install -Dm644 clipboard-sync-service "$pkgdir/etc/systemd/system/clipboard-sync-client.service"  
+        install -Dm644 clipboard-sync-client.service "$pkgdir/etc/systemd/system/clipboard-sync-client.service"  
  }   
