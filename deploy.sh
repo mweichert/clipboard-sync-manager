@@ -42,7 +42,7 @@ sed -i "s/pkgrel=.*/pkgrel=$next_release/" arch-packages/client/PKGBUILD
 sed -i "s/pkgrel=.*/pkgrel=$next_release/" arch-packages/server/PKGBUILD
                                                                                                                                                                                                                     
 # Git commit, tag and push                                                                                                                                                                                        
-git add arch-packages/client/PKGBUILD                                                                                                                                                                             
+git add arch-packages                                                                                                                                                                             
 git commit -m "Version bump to $new_version"                                                                                                                                                                      
 git tag v$new_version
 git push && git push --tags                                                                                                                                                                                             
