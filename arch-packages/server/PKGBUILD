@@ -1,6 +1,6 @@
 pkgname=clipboard-sync-server
-pkgver=0.11
-pkgrel=1
+pkgver=0.12
+pkgrel=0
 pkgdesc="Server for clipboard-sync-manager project"
 arch=('x86_64')
 url="http://github.com/mweichert/clipboard-sync-manager"
@@ -8,7 +8,7 @@ license=('MIT')
 source=("clipboard-sync-server.zip::https://github.com/mweichert/clipboard-sync-manager/releases/download/v$pkgver/clipboard-sync-server.zip"
         "clipboard-sync-server.service::https://raw.githubusercontent.com/mweichert/clipboard-sync-manager/main/arch-packages/server/clipboard-sync-server.service"
         )
-sha256sums=('SKIP')  # Replace 'SKIP' with the actual SHA-256 sum if available
+sha256sums=('SKIP' 'SKIP')
 install=clipboard-sync-server.install
 
  package() {                                                                                                                                                                                                       
