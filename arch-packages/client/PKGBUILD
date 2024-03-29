@@ -16,5 +16,5 @@ depends=('xclip' 'clipcat')
         cd "$srcdir"                                                                                                                                                                                                  
         install -d "$pkgdir/opt/clipboard-sync-client"                                                                                                                                                                
         cp -a dist/clipboard-sync-client/* "$pkgdir/opt/clipboard-sync-client"
-        install -Dm644 clipboard-sync-client.service "$pkgdir/etc/systemd/system/clipboard-sync-client.service"  
+        install -Dm644 clipboard-sync-client.service "$pkgdir/etc/systemd/user/clipboard-sync-client.service"  
  }   

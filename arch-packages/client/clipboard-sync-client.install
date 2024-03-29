@@ -2,6 +2,16 @@
 
 post_install() {
     echo "Enabling and starting clipboard-sync-client.service"
-    systemctl enable clipboard-sync-client.service
-    systemctl start clipboard-sync-client.service
+    systemctl daemon-reload
+    echo "To enable the clipboard-sync-client service, run: 'systemctl --user enable clipboard-sync-client.service'
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    echo "Please run 'systemctl --user daemon-reload'"
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo "Please run 'systemctl --user daemon-reload'"
 }
