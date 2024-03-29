@@ -94,7 +94,7 @@ jobs:
         uses: docker://archlinux:latest
         with:
           entrypoint: /bin/bash
-          args: -c "pacman -Sy --noconfirm base-devel git && chown -R nobody repo && cd repo/arch-packages/client && sudo -u nobody makepkg -s && cd ../server && sudo -u nobody makepkg -s"
+          args: -c "pacman -Sy --noconfirm base-devel git xclip clipcat && chown -R nobody repo && cd repo/arch-packages/client && sudo -u nobody makepkg -s && cd ../server && sudo -u nobody makepkg -s"
               
       - name: Upload client package to Release
         id: upload-client-package
