@@ -31,5 +31,5 @@ sed -i "s/pkgver=$version/pkgver=$new_version/" arch-packages/client/PKGBUILD
 # Git commit, tag and push                                                                                                                                                                                        
 git add arch-packages/client/PKGBUILD                                                                                                                                                                             
 git commit -m "Version bump to $new_version"                                                                                                                                                                      
-git tag v$new_version                                                                                                                                                                                             
-git push origin v$new_version
+git tag v$new_version
+git push && git push --tags                                                                                                                                                                                             
