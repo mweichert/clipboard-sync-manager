@@ -50,6 +50,8 @@ jobs:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
@@ -59,6 +61,8 @@ jobs:
       - name: Upload Release Asset Client
         id: upload-release-asset-client
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./clipboard-sync-client.zip
@@ -67,6 +71,8 @@ jobs:
       - name: Upload Release Asset Server
         id: upload-release-asset-server
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./clipboard-sync-server.zip
@@ -90,6 +96,8 @@ jobs:
       - name: Upload client package to Release
         id: upload-client-package
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
           asset_path: ./repo/arch-packages/client/*.pkg.tar.zst
@@ -99,6 +107,8 @@ jobs:
       - name: Upload server package to Release
         id: upload-server-package
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
           asset_path: ./repo/arch-packages/server/*.pkg.tar.zst
