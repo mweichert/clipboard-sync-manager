@@ -97,6 +97,18 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: -c "pacman -Sy --noconfirm base-devel git xclip clipcat && chown -R nobody repo && cd repo/arch-packages/client && sudo -u nobody makepkg -s && cd ../server && sudo -u nobody makepkg -s"
+
+      - name: Find built server package
+        id: find-server-package
+        run: |
+          FILE_PATH=$(find ./repo/arch-packages/server -name '*.pkg.tar.zst')
+          echo "SERVER_PACKAGE_PATH=$FILE_PATH" >> $GITHUB_ENV
+
+      - name: Find built client package
+        id: find-client-package
+        run: |
+          FILE_PATH=$(find ./repo/arch-packages/client -name '*.pkg.tar.zst')
+          echo "CLIENT_PACKAGE_PATH=$FILE_PATH" >> $GITHUB_ENV
               
       - name: Upload client package to Release
         id: upload-client-package
@@ -105,7 +117,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
-          asset_path: ./repo/arch-packages/client/*.pkg.tar.zst
+          asset_path: ${{ env.CLIENT_PACKAGE_PATH }}
           asset_name: clipboard-sync-client.pkg.tar.zst
           asset_content_type: application/zstd
       
@@ -116,7 +128,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build.outputs.upload_url }}  # Ensure this uses the output from the build job
-          asset_path: ./repo/arch-packages/server/*.pkg.tar.zst
+          asset_path: ${{ env.SERVER_PACKAGE_PATH }}
           asset_name: clipboard-sync-server.pkg.tar.zst
           asset_content_type: application/zstd
   
