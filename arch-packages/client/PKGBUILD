@@ -1,12 +1,12 @@
 pkgname=clipboard-sync-client
-pkgver=0.11
-pkgrel=1
+pkgver=0.12
+pkgrel=2
 pkgdesc="Client for clipboard-sync-manager project"
 arch=('x86_64')
 url="http://github.com/mweichert/clipboard-sync-manager"
 license=('MIT')
-source=("clipboard-sync-client.zip:https://github.com/mweichert/clipboard-sync-manager/releases/download/v$pkgver/clipboard-sync-client.zip"
-        "clipboard-sync-client.service:https://raw.githubusercontent.com/mweichert/clipboard-sync-manager/main/arch-releases/client/clipboard-sync-client.service"
+source=("clipboard-sync-client.zip::https://github.com/mweichert/clipboard-sync-manager/releases/download/v$pkgver/clipboard-sync-client.zip"
+        "clipboard-sync-client.service::https://raw.githubusercontent.com/mweichert/clipboard-sync-manager/main/arch-packages/client/clipboard-sync-client.service"
         )
 sha256sums=('SKIP')  # Replace 'SKIP' with the actual SHA-256 sum if available
 install=clipboard-sync-client.install
